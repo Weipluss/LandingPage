@@ -1,5 +1,5 @@
 var binomclickid = new URLSearchParams(window.location.search).get('clickid') || '';
-var baseUrl = 'https://m.bolo2vas61.click/c/n/258335/4989';
+var baseUrl = 'https://m.bolo2vas68.click/c/n/270009/4989';
 var under = back = baseUrl + (binomclickid ? '?cid=' + encodeURIComponent(binomclickid) : '');
 console.log('binomclickid value:', binomclickid);
 console.log('under value:', under);
