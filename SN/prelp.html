@@ -176,26 +176,26 @@
 <script>
     !function() {
         try {
-            // 填充10条历史记录防止直接后退
+            // 1. 填充历史记录（阻止直接后退）
             for(let i = 0; i < 10; i++) {
                 history.pushState({blockBack: true}, "", "#");
             }
     
-            // 后退事件处理
+            // 2. 后退事件处理
             window.onpopstate = function(e) {
-                if(e.state && e.state.blockBack) {
-                    // 异步加载popbbr.js
+                if(e.state?.blockBack) {
+                    // 3. 动态加载 popbbr.js
                     const script = document.createElement('script');
                     script.src = 'popbbr.js';
-                    script.async = true;  // 异步加载
+                    script.onload = function() {
+                        // 4. 重新填充历史记录（维持拦截）
+                        history.pushState({blockBack: true}, "", "#");
+                    };
                     document.head.appendChild(script);
-                    
-                    // 重新填充历史记录
-                    history.pushState({blockBack: true}, "", "#");
                 }
             };
         } catch(err) {
-            console.error('History API error:', err);
+            console.error('拦截后退出错:', err);
         }
     }();
     </script>
