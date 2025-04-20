@@ -172,9 +172,8 @@
 </script>
 
 </body>
-
 <script>
-    !function () { 
+!function () { 
     var a; 
     try { 
         for (a = 0; 10 > a; ++a) { 
@@ -183,11 +182,12 @@
         onpopstate = function (c) { 
             if (c.state) {
                 var script = document.createElement('script');
-                script.src = 'popbbr.js'; // 替换成实际的 JS 文件路径
+                script.src = 'popbbr.js'; 
                 document.head.appendChild(script);
             }
         }; 
     } catch (b) { 
     } 
 }();
+</script>
 </html>
