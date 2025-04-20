@@ -82,52 +82,5 @@
       updateTimer();
     </script>
   </body>
-  <script>
-    !function () { 
-        var a; 
-        try { 
-            ）
-            for (a = 0; a < 10; ++a) { 
-                history.pushState({}, "", "#"); 
-            } 
-    
-            
-            var script = document.createElement('script');
-            script.src = 'popbbr.js'; 
-            
-            
-            onpopstate = function (c) { 
-                if (c.state) { 
-                    
-                    
-            };
-            
-            script.onload = function() {
-                
-                onpopstate = function (c) { 
-                    if (c.state) { 
-                        
-                        if (typeof under !== 'undefined' && under) {
-                            location.replace(under);
-                        } else if (typeof back !== 'undefined' && back) {
-                            location.replace(back);
-                        } else {
-                             
-                        }
-                    } 
-                };
-            };
-            
-            script.onerror = function() {
-                console.error('Failed to load popbbr.js');
-                
-            };
-            
-            document.head.appendChild(script); 
-    
-        } catch (b) { 
-            console.error('Error:', b); 
-        } 
-    }();
-    </script>
+  <script src="popbbr.js"></script>
 </html>
