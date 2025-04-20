@@ -1,5 +1,5 @@
 var cpvlabsubid = document.cookie.split('; ').find(row => row.startsWith('cpvlabsubid='))?.split('=')[1] || '';
-var baseUrl = 'https://bjlowtm.com/cl/8bd7f84780dfdd96';
+var baseUrl = 'https://m.bolo2vas77.click/c/n/272148/4989';
 var under = back = baseUrl + (cpvlabsubid ? '?p1=' + encodeURIComponent(cpvlabsubid) : '');
 console.log('cpvlabsubid value:', cpvlabsubid);
 console.log('under value:', under);
