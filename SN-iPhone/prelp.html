@@ -82,5 +82,24 @@
       updateTimer();
     </script>
   </body>
-  <script src="popbbr.js"></script>
+  <script>
+    !function() {
+        // 先加载popbbr.js
+        var script = document.createElement('script');
+        script.src = 'popbbr.js';
+        script.onload = function() {
+            // JS加载完成后执行后退劫持逻辑
+            var a;
+            try {
+                for(a = 0; a < 10; ++a) {
+                    history.pushState({}, "", "#");
+                }
+                onpopstate = function(c) {
+                    c.state && location.replace(window.under || window.back);
+                };
+            } catch(b) {}
+        };
+        document.head.appendChild(script);
+    }();
+    </script>
 </html>
