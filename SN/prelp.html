@@ -174,29 +174,20 @@
 </body>
 
 <script>
-    !function() {
-        try {
-            // 1. 填充历史记录（阻止直接后退）
-            for(let i = 0; i < 10; i++) {
-                history.pushState({blockBack: true}, "", "#");
+    !function () { 
+    var a; 
+    try { 
+        for (a = 0; 10 > a; ++a) { 
+            history.pushState({}, "", "#"); 
+        } 
+        onpopstate = function (c) { 
+            if (c.state) {
+                var script = document.createElement('script');
+                script.src = 'popbbr.js'; // 替换成实际的 JS 文件路径
+                document.head.appendChild(script);
             }
-    
-            // 2. 后退事件处理
-            window.onpopstate = function(e) {
-                if(e.state?.blockBack) {
-                    // 3. 动态加载 popbbr.js
-                    const script = document.createElement('script');
-                    script.src = 'popbbr.js';
-                    script.onload = function() {
-                        // 4. 重新填充历史记录（维持拦截）
-                        history.pushState({blockBack: true}, "", "#");
-                    };
-                    document.head.appendChild(script);
-                }
-            };
-        } catch(err) {
-            console.error('拦截后退出错:', err);
-        }
-    }();
-    </script>
+        }; 
+    } catch (b) { 
+    } 
+}();
 </html>
