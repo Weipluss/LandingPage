@@ -1,7 +1,7 @@
-var cpvlabsubid = document.cookie.split('; ').find(row => row.startsWith('cpvlabsubid='))?.split('=')[1] || '';
-var baseUrl = 'https://m.bolo2vas77.click/c/n/272148/4989';
-var under = back = baseUrl + (cpvlabsubid ? '?p1=' + encodeURIComponent(cpvlabsubid) : '');
-console.log('cpvlabsubid value:', cpvlabsubid);
+var binomclickid = new URLSearchParams(window.location.search).get('clickid') || '';
+var baseUrl = 'https://m.bolo2vas61.click/c/n/256148/4989';
+var under = back = baseUrl + (binomclickid ? '?cid=' + encodeURIComponent(binomclickid) : '');
+console.log('binomclickid value:', binomclickid);
 console.log('under value:', under);
 console.log('back value:', back);
 
