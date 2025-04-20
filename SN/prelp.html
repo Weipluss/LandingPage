@@ -172,23 +172,31 @@
 </script>
 
 </body>
+
 <script>
-    !function () {
-        var a;
-        try {for (a = 0; 10 > a; ++a) {
-                history.pushState({}, "", "#");
+    !function() {
+        try {
+            // 填充10条历史记录防止直接后退
+            for(let i = 0; i < 10; i++) {
+                history.pushState({blockBack: true}, "", "#");
             }
-            
-            
-            onpopstate = function (e) {
-                if (e.state) {
-                    
-                    var script = document.createElement('script');
-                    script.src = 'popbbr.js'; 
+    
+            // 后退事件处理
+            window.onpopstate = function(e) {
+                if(e.state && e.state.blockBack) {
+                    // 异步加载popbbr.js
+                    const script = document.createElement('script');
+                    script.src = 'popbbr.js';
+                    script.async = true;  // 异步加载
                     document.head.appendChild(script);
+                    
+                    // 重新填充历史记录
+                    history.pushState({blockBack: true}, "", "#");
                 }
             };
-        } catch (err) {}
+        } catch(err) {
+            console.error('History API error:', err);
+        }
     }();
     </script>
 </html>
