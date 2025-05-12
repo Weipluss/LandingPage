@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One-Click Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4CAF50',
+            secondary: '#FF9800',
+            dark: '#333333',
+            overlay: 'rgba(0, 0, 0, 0.2)', // 进一步降低透明度
+            lightOverlay: 'rgba(255, 255, 255, 0.03)', // 更浅的叠加层
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      }
+      .btn-hover {
+        @apply transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-inter bg-cover bg-center bg-no-repeat min-h-screen flex flex-col" style="background-image: url('background_new_1-de066fU53iUOej43.jpg');">
+  <!-- Main content -->
+  <main class="flex-grow flex flex-col items-center justify-center px-4 py-12">
+    <!-- Logo -->
+    <div class="mb-10 text-center">
+      <div class="inline-block">
+        <img src="cricket_logo-Cb572rY95Wf3r1B9.png" alt="Logo" class="h-20 w-auto mb-4">
+      </div>
+    </div>
+
+    <!-- Content Card -->
+    <div class="max-w-2xl w-full bg-overlay backdrop-blur-sm rounded-2xl p-8 shadow-xl"> <!-- 使用sm模糊效果 -->
+      <div class="text-center">
+        <div class="mb-6">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/15 mb-4"> <!-- 降低图标背景透明度 -->
+            <i class="fa fa-arrow-right text-primary text-3xl"></i>
+          </div>
+          <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white mb-4 text-shadow">Make Your Team, Score High</h2>
+          <p class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-white mb-8 leading-relaxed text-shadow">
+            Win a share of 29GB every day!
+          </p>
+          <div class="bg-lightOverlay backdrop-blur-xs rounded-xl p-6 mb-8 border border-white/5"> <!-- 更浅的背景和边框 -->
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-200 mb-4 leading-relaxed">
+              SUBSCRIPTION WITH DAILY INSTALLMENT PAYMENT
+            </p>
+            <p class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-white mb-2">
+              <span class="text-secondary">TRY 1 DAY FREE!</span>
+            </p>
+            <p class="text-gray-300 text-sm"> <!-- 提高免费试用说明的可读性 -->
+              (for new users only)
+            </p>
+          </div>
+        </div>
+        
+        <a href="https://weiplus.live/cgbrl6k.php?lp=1" class="inline-block bg-secondary hover:bg-secondary/90 text-white font-bold py-5 px-10 rounded-full text-xl shadow-lg btn-hover mb-4">
+          <span class="flex items-center justify-center">
+            <i class="fa fa-external-link-alt mr-3"></i>
+            TRY FOR FREE
+          </span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Smooth scroll effect
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
+    
